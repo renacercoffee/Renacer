@@ -1,0 +1,60 @@
+{
+  "categorias": [
+    {
+      "nombre": "Especiales",
+      "productos": [
+        {"nombre": "Fresa", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
+        {"nombre": "Cambur", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
+        {"nombre": "Mixto Cambur/Fresa", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
+        {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo, Azúcar, Vainilla"},
+        {"nombre": "Tropical Piña/Coco", "precio": "3.20", "descripcion": "Leche Condensada, Leche, Azúcar, Vainilla, Hielo"}
+      ]
+    },
+    {
+      "nombre": "Refrescantes",
+      "productos": [
+        {"nombre": "Frappe Parchita", "precio": "1.50", "descripcion": "Parchita, Hielo, Azúcar"},
+        {"nombre": "Frappe Fresa", "precio": "1.80", "descripcion": "Fresa, Hielo, Azúcar"},
+        {"nombre": "Frappe Piña", "precio": "1.80", "descripcion": "Piña, Hielo, Azúcar"}
+      ]
+    },
+    {
+      "nombre": "Vitalidad",
+      "productos": [
+        {"nombre": "Renacer Verde", "precio": "2.50", "descripcion": "Pepino, Apio, Manzana Verde, Limón, Hielo"},
+        {"nombre": "Renacer Rojo", "precio": "2.00", "descripcion": "Zanahoria, Remolacha, Manzana Verde, Fresa, Limón, Hielo"},
+        {"nombre": "Renacer Naranja", "precio": "1.50", "descripcion": "Naranja, Piña, Jengibre, Hielo"}
+      ]
+    },
+    {
+      "nombre": "Merengadas",
+      "productos": [
+        {"nombre": "Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Cambur", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Mixto Cambur/Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Piña", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Parchita", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Cerelac", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"}
+      ]
+    },
+    {
+      "nombre": "El Despertar",
+      "productos": [
+        {"nombre": "Expresso", "precio": "0.60", "descripcion": "Café Molido, Azúcar"},
+        {"nombre": "Capuchino", "precio": "1.50", "descripcion": "Café Molido, Leche, Azúcar"},
+        {"nombre": "Ice Capuchino", "precio": "2.00", "descripcion": "Leche, Hielo, Café Instantáneo, Azúcar"}
+      ]
+    },
+    {
+      "nombre": "Varios",
+      "productos": [
+        {"nombre": "Granola", "precio": "0.60", "descripcion": ""},
+        {"nombre": "Gatorade", "precio": "2.00", "descripcion": ""},
+        {"nombre": "Soda", "precio": "1.00", "descripcion": ""},
+        {"nombre": "Agua Saborizada", "precio": "1.20", "descripcion": ""},
+        {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
+        {"nombre": "Yogurt", "precio": "2.50", "descripcion": ""}
+      ]
+    }
+  ]
+}
