@@ -48,9 +48,9 @@
     {
       "nombre": "Varios",
       "productos": [
-        {"nombre": "Granola", "precio": "0.60", "descripcion": ""},
+        {"nombre": "Granola", "precio": "0.80", "descripcion": ""},
         {"nombre": "Gatorade", "precio": "2.00", "descripcion": ""},
-        {"nombre": "Soda", "precio": "1.00", "descripcion": ""},
+        {"nombre": "Soda", "precio": "1.5", "descripcion": ""},
         {"nombre": "Agua Saborizada", "precio": "1.20", "descripcion": ""},
         {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
         {"nombre": "Yogurt", "precio": "2.50", "descripcion": ""}
