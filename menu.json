@@ -40,7 +40,8 @@
     {
       "nombre": "El Despertar",
       "productos": [
-        {"nombre": "Expresso", "precio": "0.60", "descripcion": "Café Molido, Azúcar"},
+        {"nombre": "Expresso Pequeño", "precio": "0.60", "descripcion": "Café Molido, Azúcar"},
+         {"nombre": "Expresso Grande", "precio": "1.00", "descripcion": "Café Molido, Azúcar"}
         {"nombre": "Capuchino", "precio": "1.50", "descripcion": "Café Molido, Leche, Azúcar"},
         {"nombre": "Ice Capuchino", "precio": "2.00", "descripcion": "Leche, Hielo, Café Instantáneo, Azúcar"}
       ]
@@ -53,7 +54,7 @@
         {"nombre": "Soda", "precio": "1.5", "descripcion": ""},
         {"nombre": "Agua Saborizada", "precio": "1.20", "descripcion": ""},
         {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
-        {"nombre": "Yogurt", "precio": "2.50", "descripcion": ""}
+        {"nombre": "Yogurt", "precio": "2.00", "descripcion": ""}
       ]
     }
   ]
