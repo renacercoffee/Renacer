@@ -3,9 +3,9 @@
     {
       "nombre": "Especiales",
       "productos": [
-        {"nombre": "Fresa Power", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
-        {"nombre": "Cambur Power", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
-        {"nombre": "Mixto Power", "precio": "3.00", "descripcion": "Fresa, Cambur, Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo"},
+        {"nombre": "Fresa Power", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo", "Add": "Proteina Extra por 0.50$"},
+        {"nombre": "Cambur Power", "precio": "3.00", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo","Add": "Proteina Extra por 0.50$" },
+        {"nombre": "Mixto Power", "precio": "3.00", "descripcion": "Fresa, Cambur, Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo", "Add": "Proteina Extra por 0.50$"},
         {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo, Azúcar, Vainilla"},
         {"nombre": "Tropical Piña/Coco", "precio": "3.20", "descripcion": "Leche Condensada, Leche, Azúcar, Vainilla, Hielo"}
       ]
