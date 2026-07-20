@@ -3,9 +3,9 @@
     {
       "nombre": "Especiales",
       "productos": [
-        {"nombre": "Fresa Power", "precio": "3.20", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para ganar masa muscular"},
-        {"nombre": "Cambur Power", "precio": "3.20", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para ganar masa muscular"},
-        {"nombre": "Mixto Power", "precio": "3.20", "descripcion": "Fresa, Cambur, Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para ganar masa muscular"},
+        {"nombre": "Fresa Power", "precio": "3.20", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para Volumen"},
+        {"nombre": "Cambur Power", "precio": "3.20", "descripcion": "Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para Volumen"},
+        {"nombre": "Mixto Power", "precio": "3.20", "descripcion": "Fresa, Cambur, Leche, Avena, Azúcar, Mantequilla de Maní, Vainilla, Hielo. Ideal para Volumen"},
         {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo, Azúcar, Vainilla"},
         {"nombre": "Tropical Piña/Coco", "precio": "3.20", "descripcion": "Leche Condensada, Leche, Azúcar, Vainilla, Hielo"}
       ]
