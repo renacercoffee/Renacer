@@ -32,9 +32,8 @@
         {"nombre": "Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
         {"nombre": "Cambur", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
         {"nombre": "Mixta Cambur/Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Piña", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
         {"nombre": "Parchita", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Cerelac", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"}
+        {"nombre": "Cerelac", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"}
       ]
     },
     {
@@ -43,16 +42,14 @@
         {"nombre": "Espresso Pequeño", "precio": "0.60", "descripcion": "Café Molido, Azúcar"},
         {"nombre": "Espresso Grande", "precio": "1.00", "descripcion": "Café Molido, Azúcar"},
         {"nombre": "Capuchino", "precio": "1.50", "descripcion": "Café Molido, Leche, Azúcar"},
-        {"nombre": "Ice Capuchino", "precio": "2.00", "descripcion": "Leche, Hielo, Café Instantáneo, Azúcar"}
+        {"nombre": "Capuchino Frio", "precio": "2.00", "descripcion": "Leche, Hielo, Café Instantáneo, Azúcar"}
       ]
     },
     {
       "nombre": "Varios",
       "productos": [
-        {"nombre": "Granola", "precio": "1.00", "descripcion": ""},
         {"nombre": "Gatorade", "precio": "2.00", "descripcion": ""},
         {"nombre": "Soda", "precio": "1.50", "descripcion": ""},
-        {"nombre": "Agua Saborizada", "precio": "1.20", "descripcion": ""},
         {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
         {"nombre": "Yogurt", "precio": "2.00", "descripcion": ""}
       ]
