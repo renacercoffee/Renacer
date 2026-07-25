@@ -199,7 +199,6 @@
             padding-bottom: 10px;
         }
 
-        /* CORRECCIÓN: Letras del menú ahora igualan el tono rosa oscuro del Logo */
         .categoria-titulo {
             color: var(--dark-pink);
             font-size: 1.4rem;
@@ -274,7 +273,20 @@
             color: #fff;
         }
 
-        /* CORRECCIÓN: Sistema de Barras Fijas con tamaños idénticos y color unificado */
+        /* Banner específico dentro de la categoría */
+        .promo-especial-banner {
+            background-color: var(--light-bg);
+            border: 1px dashed var(--dark-pink);
+            color: var(--dark-pink);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Sistema de Barras Fijas */
         .action-bar-container {
             position: fixed;
             bottom: 20px;
@@ -289,7 +301,7 @@
 
         .btn {
             width: 100%;
-            height: 50px; /* Forzamos exactamente la misma altura */
+            height: 50px;
             border-radius: 18px;
             text-decoration: none;
             color: white;
@@ -305,7 +317,7 @@
             border: none;
             cursor: pointer;
             box-sizing: border-box;
-            background: var(--dark-pink); /* Mismo color corporativo para ambos */
+            background: var(--dark-pink);
         }
 
         .btn:active {
@@ -324,7 +336,7 @@
 
     <header>
         <div class="equipo-container">
-        <img src="Equipo de trabajo mejor.JPG" alt="Equipo de trabajo">
+            <img src="Equipo de trabajo mejor.JPG" alt="Equipo de trabajo">
         </div>
         
         <div class="logo-digital">
@@ -335,7 +347,6 @@
         <p>sabores que mantienen tu energía</p>
     </header>
 
-    <!-- Ventana Emergente Oculta de Momentos -->
     <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -343,29 +354,29 @@
                 <button class="close-btn" onclick="closeModal('modal-momentos')">&times;</button>
             </div>
             <div class="grid-momentos">
-<img src="Momentos 1.jpg" alt="Momento 1">
-<img src="Momentos 2.jpg" alt="Momento 2">
-<img src="Momentos 3.jpg" alt="Momento 3">
-<img src="Momentos 4.jpg" alt="Momento 4">
-<img src="Momentos 5.jpg" alt="Momento 5">
-<img src="Momentos 6.JPG" alt="Momento 6"> 
-<img src="Momentos 7.JPG" alt="Momento 7">
-<img src="Momentos 8.JPG" alt="Momento 8">
-<img src="Momentos 9.JPG" alt="Momento 9">
-<img src="Momentos 10.JPG" alt="Momento 10">  
-<img src="Momentos 11.JPG" alt="Momento 11">
-<img src="Momentos 12.JPG" alt="Momento 12">
-<img src="Momentos 13.JPG" alt="Momento 13"> 
-<img src="Momentos 14.JPG" alt="Momento 14">
-<img src="Momentos 15.JPG" alt="Momento 15">
-<img src="Momentos 16.JPG" alt="Momento 16">
-<img src="Momentos 17.JPG" alt="Momento 17">
-<img src="Momentos 18.JPG" alt="Momento 18">
-<img src="Momentos 19.JPG" alt="Momento 19">
-<img src="Momentos 20.JPG" alt="Momento 20">
-<img src="Momentos 21.jpg" alt="Momento 21">              
-     </div>
-     </div>
+                <img src="Momentos 1.jpg" alt="Momento 1">
+                <img src="Momentos 2.jpg" alt="Momento 2">
+                <img src="Momentos 3.jpg" alt="Momento 3">
+                <img src="Momentos 4.jpg" alt="Momento 4">
+                <img src="Momentos 5.jpg" alt="Momento 5">
+                <img src="Momentos 6.JPG" alt="Momento 6"> 
+                <img src="Momentos 7.JPG" alt="Momento 7">
+                <img src="Momentos 8.JPG" alt="Momento 8">
+                <img src="Momentos 9.JPG" alt="Momento 9">
+                <img src="Momentos 10.JPG" alt="Momento 10">  
+                <img src="Momentos 11.JPG" alt="Momento 11">
+                <img src="Momentos 12.JPG" alt="Momento 12">
+                <img src="Momentos 13.JPG" alt="Momento 13"> 
+                <img src="Momentos 14.JPG" alt="Momento 14">
+                <img src="Momentos 15.JPG" alt="Momento 15">
+                <img src="Momentos 16.JPG" alt="Momento 16">
+                <img src="Momentos 17.JPG" alt="Momento 17">
+                <img src="Momentos 18.JPG" alt="Momento 18">
+                <img src="Momentos 19.JPG" alt="Momento 19">
+                <img src="Momentos 20.JPG" alt="Momento 20">
+                <img src="Momentos 21.jpg" alt="Momento 21">              
+            </div>
+        </div>
     </div>
 
     <div class="menu-container">
@@ -378,7 +389,6 @@
         </div>
     </div>
 
-    <!-- Ambas barras unificadas en diseño, color y tamaño -->
     <div class="action-bar-container">
         <button class="btn" onclick="openModal('modal-momentos')">
             ✨ Ver Nuestros Momentos
@@ -417,6 +427,15 @@
                                 <h2 class="categoria-titulo">${cat.nombre}</h2>
                             </div>
                     `;
+
+                    // Si la categoría es la de "Especiales", insertamos el banner promocional
+                    if (cat.nombre.toLowerCase().includes('especial')) {
+                        cardHTML += `
+                            <div class="promo-especial-banner">
+                                💡 Por la compra de un batido especial, tu adicional de proteína queda en <strong>$0.30</strong>
+                            </div>
+                        `;
+                    }
                     
                     cat.productos.forEach(prod => {
                         cardHTML += `
