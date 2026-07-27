@@ -29,11 +29,11 @@
     {
       "nombre": "Merengadas",
       "productos": [
-        {"nombre": "Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Cambur", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Piña", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Parchita", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
-        {"nombre": "Cambur/Fresa", "precio": "2.50", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Fresa", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Cambur", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Piña", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Parchita", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"},
+        {"nombre": "Cambur/Fresa", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"},
         {"nombre": "Cerelac", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"}
       ]
     },
