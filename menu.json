@@ -4,11 +4,11 @@
       "nombre": "Especiales",
       "productos": [
         
-        {"nombre": "Tropical", "precio": "3.00", "descripcion": "Piña, Coco, Leche Condensada, Leche"}
+        {"nombre": "Tropical", "precio": "3.00", "descripcion": "Piña, Coco, Leche Condensada, Leche"},
         {"nombre": "Cambur Power", "precio": "3.00", "descripcion": "Leche, Avena, Mantequilla de Maní, Azucar. Ideal Post-Entreno"},
         {"nombre": "Fresa Power", "precio": "3.20", "descripcion": "Leche, Avena, Mantequilla de Mani, Azucar. Ideal Post-Entreno"},
         {"nombre": "Mixto Power", "precio": "3.20", "descripcion": "Fresa, Cambur, Leche, Avena, Mantequilla de Maní, Azucar. Ideal Post-Entreno"},
-        {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo"},
+        {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo"}
       ]
     },
     {
@@ -22,9 +22,9 @@
     {
       "nombre": "Vitalidad",
       "productos": [
-        {"nombre": "Renacer Naranja", "precio": "1.50", "descripcion": "Naranja, Piña, Jengibre"}
+        {"nombre": "Renacer Naranja", "precio": "1.50", "descripcion": "Naranja, Piña, Jengibre"},
         {"nombre": "Renacer Rojo", "precio": "2.00", "descripcion": "Zanahoria, Remolacha, Manzana Verde, Fresa, Limón"},
-        {"nombre": "Renacer Verde", "precio": "2.50", "descripcion": "Pepino, Apio, Manzana Verde, Limón"},
+        {"nombre": "Renacer Verde", "precio": "2.50", "descripcion": "Pepino, Apio, Manzana Verde, Limón"}
       ]
     },
     {
@@ -53,7 +53,7 @@
         {"nombre": "Gatorade", "precio": "2.00", "descripcion": ""},
         {"nombre": "Soda", "precio": "1.50", "descripcion": ""},
         {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
-        {"nombre": "Yogurt", "precio": "2.00", "descripcion": ""}
+        {"nombre": "Yogurt", "precio": "2.00", "descripcion": ""},
         {"nombre": "Toston", "precio": "1.00", "descripcion": ""}
       ]
     }
