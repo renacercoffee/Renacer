@@ -428,13 +428,6 @@
                             </div>
                     `;
 
-                    // Si la categoría es la de "Especiales", insertamos el banner promocional
-                    if (cat.nombre.toLowerCase().includes('especial')) {
-                        cardHTML += `
-                            <div class="promo-especial-banner">
-                                💡 Por la compra de un batido especial, tu adicional de proteína queda en <strong>$0.30</strong>
-                            </div>
-                        `;
                     }
                     
                     cat.productos.forEach(prod => {
