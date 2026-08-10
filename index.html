@@ -99,7 +99,7 @@
             width: 80%;
         }
 
-        /* Ventana Flotante de Momentos */
+        /* Ventana Flotante Modal */
         .modal {
             display: none; 
             position: fixed;
@@ -123,6 +123,8 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             animation: fadeIn 0.3s ease;
             position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal-header {
@@ -132,6 +134,10 @@
             margin-bottom: 20px;
             border-bottom: 2px solid var(--light-bg);
             padding-bottom: 10px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
         }
 
         .modal-header h3 {
@@ -149,12 +155,11 @@
             cursor: pointer;
         }
 
+        /* Estilos Momentos */
         .grid-momentos {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            max-height: 400px;
-            overflow-y: auto;
             padding-right: 5px;
         }
 
@@ -164,6 +169,67 @@
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Estilos Promociones */
+        .promo-card {
+            background: rgba(255, 245, 247, 0.6);
+            border: 2px dashed var(--soft-pink);
+            border-radius: 16px;
+            padding: 20px 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .promo-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .promo-card h4 {
+            color: var(--primary-pink);
+            font-size: 1.3rem;
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .promo-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0 0 15px 0;
+            font-weight: 600;
+        }
+
+        .promo-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .promo-item {
+            background: white;
+            color: var(--dark-pink);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(230, 57, 110, 0.08);
+        }
+
+        .promo-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin: 10px 0;
+            line-height: 1.4;
+        }
+
+        .promo-limit {
+            font-size: 0.85rem;
+            color: var(--primary-pink);
+            font-weight: bold;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         @keyframes fadeIn {
@@ -176,7 +242,7 @@
             width: 92%;
             max-width: 550px;
             margin-top: 25px;
-            margin-bottom: 160px;
+            margin-bottom: 220px; /* Aumentado para que quepan 3 botones en la barra de acciones */
         }
 
         .categoria-card {
@@ -273,19 +339,6 @@
             color: #fff;
         }
 
-        /* Banner específico dentro de la categoría */
-        .promo-especial-banner {
-            background-color: var(--light-bg);
-            border: 1px dashed var(--dark-pink);
-            color: var(--dark-pink);
-            border-radius: 12px;
-            padding: 10px 14px;
-            margin-bottom: 18px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-align: center;
-        }
-
         /* Sistema de Barras Fijas */
         .action-bar-container {
             position: fixed;
@@ -320,6 +373,10 @@
             background: var(--dark-pink);
         }
 
+        .btn-promo {
+            background: var(--primary-pink); /* Un tono más claro para que resalte */
+        }
+
         .btn:active {
             transform: scale(0.97);
         }
@@ -347,6 +404,7 @@
         <p>sabores que mantienen tu energía</p>
     </header>
 
+    <!-- Modal de Momentos -->
     <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -375,14 +433,32 @@
                 <img src="Momentos 19.JPG" alt="Momento 19">
                 <img src="Momentos 20.JPG" alt="Momento 20">
                 <img src="Momentos 21.jpg" alt="Momento 21">              
-                <img src="Momentos 22.JPG" alt="Momento 22">              
-                <img src="Momentos 23.JPG" alt="Momento 23">              
-                <img src="Momentos 24.JPG" alt="Momento 24">              
-                <img src="Momentos 25.JPG" alt="Momento 25">              
-                <img src="Momentos 26.JPG" alt="Momento 26">              
-                <img src="Momentos 27.JPG" alt="Momento 27">   
-                <img src="Momentos 28.JPG" alt="Momento 28">              
-                
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVO: Modal de Promociones -->
+    <div id="modal-promos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-promos')">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Promociones</h3>
+                <button class="close-btn" onclick="closeModal('modal-promos')">&times;</button>
+            </div>
+            <div>
+                <div class="promo-card">
+                    <h4>🍹 Happy Hours</h4>
+                    <p class="promo-subtitle">Lunes a sábado de 8AM a 12PM</p>
+                    <div class="promo-items">
+                        <div class="promo-item">2 Merengadas x $4.50</div>
+                        <div class="promo-item">2 Especiales x $5.60</div>
+                    </div>
+                </div>
+
+                <div class="promo-card">
+                    <h4>⚡ Tarde de Poder</h4>
+                    <p class="promo-text"><strong>Proteína gratis</strong> en todos los batidos especiales.</p>
+                    <p class="promo-limit">⏳ Solo por tiempo limitado</p>
+                </div>
             </div>
         </div>
     </div>
@@ -398,6 +474,11 @@
     </div>
 
     <div class="action-bar-container">
+        <!-- NUEVO: Botón de Promociones -->
+        <button class="btn btn-promo" onclick="openModal('modal-promos')">
+            🎁 Ver Promociones
+        </button>
+
         <button class="btn" onclick="openModal('modal-momentos')">
             ✨ Ver Nuestros Momentos
         </button>
