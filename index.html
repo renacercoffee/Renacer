@@ -16,8 +16,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(rgba(255, 245, 247, 0.88), rgba(255, 255, 255, 0.92)), url('Logo.jpg') no-repeat center center fixed;
-            background-size: contain;
+            background: #fff5f7;
             color: var(--text-dark);
             margin: 0;
             padding: 0;
@@ -28,24 +27,63 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            text-align: center;
-            padding: 30px 20px 10px 20px;
+        /* --- HERO HEADER CON VIDEO DE FONDO --- */
+        .hero-header {
+            position: relative;
             width: 100%;
-            max-width: 550px;
-            box-sizing: border-box;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-sizing: border-box;
+            padding: 40px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.65) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .equipo-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             margin-bottom: 25px;
-            border-radius: 30px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .equipo-container img {
@@ -55,7 +93,7 @@
             object-fit: cover;
         }
 
-        /* Logotipo Digital */
+        /* Logotipo Digital sobre Video */
         .logo-digital {
             display: flex;
             flex-direction: column;
@@ -65,38 +103,39 @@
         }
 
         .logo-txt-principal {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            color: var(--dark-pink);
+            color: #ffffff;
             letter-spacing: 4px;
             text-transform: uppercase;
             line-height: 1;
             margin: 0;
             font-family: 'Arial Black', Impact, sans-serif;
-            text-shadow: 2px 2px 4px rgba(230, 57, 110, 0.15);
+            text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6);
         }
 
         .logo-txt-sub {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--dark-pink);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--soft-pink);
             letter-spacing: 6px;
             text-transform: uppercase;
             margin-top: 5px;
             margin-bottom: 15px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: var(--dark-pink);
+        .hero-content p.slogan {
+            font-size: 1.05rem;
+            color: #ffffff;
             margin: 0;
             letter-spacing: 1.2px;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-            border-top: 2px solid var(--soft-pink);
-            padding-top: 10px;
-            width: 80%;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.7);
+            border-top: 2px solid rgba(255, 209, 220, 0.6);
+            padding-top: 12px;
+            width: 85%;
         }
 
         /* Ventana Flotante Modal */
@@ -108,7 +147,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(5px);
             justify-content: center;
             align-items: center;
@@ -241,19 +280,19 @@
         .menu-container {
             width: 92%;
             max-width: 550px;
-            margin-top: 25px;
-            margin-bottom: 220px; /* Aumentado para que quepan 3 botones en la barra de acciones */
+            margin-top: 30px;
+            margin-bottom: 220px;
         }
 
         .categoria-card {
-            background: rgba(255, 255, 255, 0.94);
+            background: rgba(255, 255, 255, 0.96);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
             border-radius: 24px;
             padding: 25px 22px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(230, 57, 110, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(230, 57, 110, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
         .categoria-header {
@@ -374,7 +413,7 @@
         }
 
         .btn-promo {
-            background: var(--primary-pink); /* Un tono más claro para que resalte */
+            background: var(--primary-pink);
         }
 
         .btn:active {
@@ -383,25 +422,35 @@
 
         @media (max-width: 480px) {
             .equipo-container { max-width: 100%; }
-            .logo-txt-principal { font-size: 2.6rem; }
+            .logo-txt-principal { font-size: 2.8rem; }
             .producto-nombre, .producto-precio { font-size: 1.05rem; }
-            header p { font-size: 0.95rem; }
+            .hero-content p.slogan { font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="equipo-container">
-            <img src="Equipo de trabajo mejor.JPG" alt="Equipo de trabajo">
-        </div>
+    <!-- Header Principal con Video de Fondo -->
+    <header class="hero-header">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="video.MP4" type="video/mp4">
+            Tu navegador no soporta videos en HTML5.
+        </video>
         
-        <div class="logo-digital">
-            <h1 class="logo-txt-principal">Renacer</h1>
-            <span class="logo-txt-sub">Drinks & Coffee</span>
+        <div class="video-overlay"></div>
+
+        <div class="hero-content">
+            <div class="equipo-container">
+                <img src="Equipo de trabajo mejor.JPG" alt="Equipo de trabajo">
+            </div>
+            
+            <div class="logo-digital">
+                <h1 class="logo-txt-principal">Renacer</h1>
+                <span class="logo-txt-sub">Drinks & Coffee</span>
+            </div>
+            
+            <p class="slogan">sabores que mantienen tu energía</p>
         </div>
-        
-        <p>sabores que mantienen tu energía</p>
     </header>
 
     <!-- Modal de Momentos -->
@@ -444,7 +493,7 @@
         </div>
     </div>
 
-    <!-- NUEVO: Modal de Promociones -->
+    <!-- Modal de Promociones -->
     <div id="modal-promos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-promos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -481,7 +530,6 @@
     </div>
 
     <div class="action-bar-container">
-        <!-- NUEVO: Botón de Promociones -->
         <button class="btn btn-promo" onclick="openModal('modal-promos')">
             🎁 Ver Promociones
         </button>
