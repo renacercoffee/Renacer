@@ -1,417 +1,442 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renacer - Menú Digital</title>
-    <style>
-        :root {
-            --primary-pink: #e6396e;
-            --dark-pink: #b81d4c;
-            --soft-pink: #ffd1dc;
-            --light-bg: #fff5f7;
-            --text-dark: #2d2d2d;
-            --text-muted: #666666;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renacer Drinks & Coffee - Menú Digital</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #fff5f7;
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background-color: #0f0f0f;
+    }
 
-        /* --- TASA BCV BANNER --- */
-        #tasa-bcv-banner {
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.82);
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 0.88rem;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            z-index: 150;
-            backdrop-filter: blur(6px);
-            display: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            letter-spacing: 0.5px;
-        }
+    /* Video de fondo */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      object-fit: cover;
+    }
 
-        /* --- HERO HEADER CON VIDEO DE FONDO --- */
-        .hero-header {
-            position: relative;
-            width: 100%;
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-sizing: border-box;
-            padding: 80px 20px 40px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            background-color: #000;
-        }
+    /* Capa oscura sobre el video */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
 
-        .bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            visibility: visible;
-            opacity: 1;
-        }
+    /* Encabezado */
+    header {
+      text-align: center;
+      padding: 30px 15px 15px 15px;
+      color: #fff;
+    }
 
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
-            z-index: 2;
-        }
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      color: #f8c146;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            width: 100%;
-            max-width: 550px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    header p {
+      font-size: 1.1rem;
+      margin-top: 5px;
+      color: #e0e0e0;
+    }
 
-        .logo-digital {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 5px;
-        }
+    /* Banner Tasa BCV */
+    .bcv-banner {
+      background: rgba(248, 193, 70, 0.9);
+      color: #111;
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin: 10px auto 20px auto;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
 
-        .logo-txt-principal {
-            font-size: 3.8rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            line-height: 1;
-            margin: 0;
-            font-family: 'Arial Black', Impact, sans-serif;
-            text-shadow: 2px 3px 12px rgba(0, 0, 0, 0.9);
-        }
+    /* Contenedor Principal */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 15px 40px 15px;
+    }
 
-        .logo-txt-sub {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--soft-pink);
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.8);
-        }
+    /* Seccion Potencia tu bebida */
+    .addons-box {
+      background: linear-gradient(135deg, rgba(248, 193, 70, 0.2), rgba(0, 0, 0, 0.6));
+      border: 2px solid #f8c146;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 20px 0 30px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+    }
 
-        .hero-content p.slogan {
-            font-size: 1.05rem;
-            color: #ffffff;
-            margin: 0;
-            letter-spacing: 1.2px;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.9);
-            border-top: 2px solid rgba(255, 209, 220, 0.6);
-            padding-top: 14px;
-            width: 85%;
-        }
+    .addons-titulo {
+      color: #f8c146;
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-        /* --- MODALES --- */
-        .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 25px; border-radius: 24px; width: 90%; max-width: 450px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: fadeIn 0.3s ease; position: relative; max-height: 80vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; position: sticky; top: 0; background: white; z-index: 10; }
-        .modal-header h3 { margin: 0; color: var(--dark-pink); text-transform: uppercase; letter-spacing: 1px; }
-        .close-btn { background: none; border: none; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; }
-        .grid-momentos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding-right: 5px; }
-        .grid-momentos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .promo-card { background: rgba(255, 245, 247, 0.6); border: 2px dashed var(--soft-pink); border-radius: 16px; padding: 20px 15px; margin-bottom: 15px; text-align: center; }
-        .promo-card h4 { color: var(--primary-pink); font-size: 1.3rem; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
-        .promo-subtitle { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 15px 0; font-weight: 600; }
-        .promo-items { display: flex; flex-direction: column; gap: 10px; }
-        .promo-item { background: white; color: var(--dark-pink); font-weight: 700; font-size: 1.1rem; padding: 12px; border-radius: 12px; box-shadow: 0 4px 10px rgba(230, 57, 110, 0.08); }
-        @keyframes fadeIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .addon-item {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        /* --- CONTENEDOR Y PRODUCTOS --- */
-        .menu-container { width: 92%; max-width: 550px; margin-top: 30px; margin-bottom: 220px; }
-        .categoria-card { background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 24px; padding: 25px 22px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(230, 57, 110, 0.08); border: 1px solid rgba(255, 255, 255, 0.8); }
-        .categoria-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; }
-        .categoria-titulo { color: var(--dark-pink); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin: 0; }
-        .decoracion-icono { color: var(--dark-pink); font-size: 1.2rem; }
-        
-        .producto-item { margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px dashed var(--soft-pink); }
-        .producto-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
-        .producto-fila { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-        .producto-nombre { font-size: 1.1rem; font-weight: 600; color: #1a1a1a; max-width: 58%; }
-        
-        /* Precios Dobles */
-        .producto-precio-contenedor { display: flex; flex-direction: column; align-items: flex-end; text-align: right; white-space: nowrap; }
-        .producto-precio-usd { font-size: 1.15rem; font-weight: 800; color: var(--dark-pink); }
-        .producto-precio-ves { font-size: 0.82rem; font-weight: 700; color: #555555; margin-top: 2px; background: #fff0f3; padding: 2px 6px; border-radius: 6px; }
-        .producto-descripcion { font-size: 0.88rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4; max-width: 90%; }
+    .addon-item:last-child {
+      margin-bottom: 0;
+    }
 
-        .info-banner { background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)); color: white; border-radius: 18px; padding: 15px; text-align: center; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(230, 57, 110, 0.2); font-size: 0.95rem; font-weight: 500; }
-        .action-bar-container { position: fixed; bottom: 20px; display: flex; flex-direction: column; gap: 10px; width: 92%; max-width: 520px; z-index: 100; box-sizing: border-box; }
-        .btn { width: 100%; height: 50px; border-radius: 18px; text-decoration: none; color: white; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease; box-shadow: 0 6px 20px rgba(184, 29, 76, 0.3); border: none; cursor: pointer; background: var(--dark-pink); }
-        .btn-promo { background: var(--primary-pink); }
-        .btn:active { transform: scale(0.97); }
+    .addon-info {
+      flex: 1;
+      padding-right: 15px;
+    }
 
-        @media (max-width: 480px) {
-            .hero-header { min-height: 70vh; padding-top: 70px; }
-            .logo-txt-principal { font-size: 3rem; }
-            .producto-nombre { font-size: 1rem; }
-            .producto-precio-usd { font-size: 1.05rem; }
-            .hero-content p.slogan { font-size: 0.9rem; width: 95%; }
-        }
-    </style>
+    .addon-nombre {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .addon-desc {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .addon-precios {
+      text-align: right;
+      min-width: 90px;
+    }
+
+    /* Categorías */
+    .categoria-titulo {
+      color: #f8c146;
+      font-size: 1.6rem;
+      border-bottom: 2px solid #f8c146;
+      padding-bottom: 5px;
+      margin: 30px 0 15px 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* Productos */
+    .producto-card {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .producto-info {
+      flex: 1;
+      padding-right: 15px;
+    }
+
+    .producto-nombre {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .producto-desc {
+      font-size: 0.88rem;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    .producto-precios {
+      text-align: right;
+      min-width: 100px;
+    }
+
+    .precio-usd {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+
+    .precio-ves {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* Modal / Pop-up Promociones */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #1e1e1e;
+      border: 2px solid #f8c146;
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    }
+
+    .modal-title {
+      color: #f8c146;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .modal-body {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .modal-close-btn {
+      background: #f8c146;
+      color: #111;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      background: #e0ab37;
+    }
+
+    /* Footer / Instagram / Momentos */
+    footer {
+      text-align: center;
+      color: #ccc;
+      padding: 30px 15px;
+      font-size: 0.95rem;
+      background: rgba(0, 0, 0, 0.8);
+      border-top: 1px solid #333;
+    }
+
+    .social-section {
+      margin-bottom: 15px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #f8c146;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .social-link:hover {
+      text-decoration: underline;
+    }
+
+    .momentos-text {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Banner de Tasa BCV Oficial -->
-    <div id="tasa-bcv-banner">Obteniendo tasa oficial BCV...</div>
+  <!-- Video de Fondo -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="video.MP4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
 
-    <!-- Header Principal con Video de Fondo Limpio -->
-    <header class="hero-header">
-        <video autoplay muted loop playsinline preload="auto" class="bg-video" id="main-video">
-            <source src="video.MP4" type="video/mp4">
-            Tu navegador no soporta videos.
-        </video>
+  <!-- Pop-up Ventana Flotante de Promociones -->
+  <div id="promo-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2 class="modal-title">Nuestras Promociones</h2>
+      <div class="modal-body">
+        <p>✨ ¡Aprovecha nuestros Happy Hours y promociones especiales del día! Pregunta por nuestras ofertas en caja.</p>
+      </div>
+      <button class="modal-close-btn" onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <header>
+    <h1>Renacer</h1>
+    <p>Drinks & Coffee</p>
+  </header>
+
+  <div id="bcv-banner" class="bcv-banner">
+    Cargando tasa BCV del día...
+  </div>
+
+  <div class="container">
+    
+    <!-- Sección Potencia tu bebida -->
+    <div class="addons-box">
+      <h2 class="addons-titulo">⚡ Potencia tu bebida ⚡</h2>
+      
+      <div class="addon-item">
+        <div class="addon-info">
+          <div class="addon-nombre">Proteína</div>
+          <div class="addon-desc">Ideal en Batidos</div>
+        </div>
+        <div class="addon-precios">
+          <div class="precio-usd">$0.50</div>
+          <div id="precio-ves-proteina" class="precio-ves">Bs. --</div>
+        </div>
+      </div>
+
+      <div class="addon-item">
+        <div class="addon-info">
+          <div class="addon-nombre">C4 Pre-Work</div>
+          <div class="addon-desc">Ideal en Cítricos</div>
+        </div>
+        <div class="addon-precios">
+          <div class="precio-usd">$1.50</div>
+          <div id="precio-ves-c4" class="precio-ves">Bs. --</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Dinámico -->
+    <div id="menu-container"></div>
+  </div>
+
+  <footer>
+    <div class="social-section">
+      <p>Síguenos en Instagram:</p>
+      <a href="https://instagram.com/renacerdrinks" target="_blank" class="social-link">
+        📸 @renacerdrinks
+      </a>
+      <p class="momentos-text">¡Entra y mira todos nuestros momentos! ✨</p>
+    </div>
+    <p>&copy; Renacer Drinks & Coffee. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    let tasaBCV = 0;
+
+    function cerrarModal() {
+      document.getElementById('promo-modal').style.display = 'none';
+    }
+
+    async function obtenerTasaBCV() {
+      try {
+        const res = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
+        const data = await res.json();
+        tasaBCV = data.promedio;
+        document.getElementById('bcv-banner').innerText = `Tasa Oficial BCV Hoy: Bs. ${tasaBCV.toFixed(2)}`;
         
-        <div class="video-overlay"></div>
+        // Actualizar precios en Bs de la sección Potencia tu bebida
+        if (tasaBCV > 0) {
+          document.getElementById('precio-ves-proteina').innerText = `Bs. ${(0.50 * tasaBCV).toFixed(2)}`;
+          document.getElementById('precio-ves-c4').innerText = `Bs. ${(1.50 * tasaBCV).toFixed(2)}`;
+        }
+      } catch (e) {
+        console.error("Error obteniendo tasa BCV:", e);
+        document.getElementById('bcv-banner').innerText = "Tasa Oficial BCV";
+      }
+    }
 
-        <div class="hero-content">
-            <div class="logo-digital">
-                <h1 class="logo-txt-principal">Renacer</h1>
-                <span class="logo-txt-sub">Drinks & Coffee</span>
-            </div>
-            
-            <p class="slogan">sabores que mantienen tu energía</p>
-        </div>
-    </header>
+    async function cargarMenu() {
+      await obtenerTasaBCV();
+      try {
+        const res = await fetch('menu.json');
+        const data = await res.json();
+        const container = document.getElementById('menu-container');
+        container.innerHTML = '';
 
-    <!-- Modal Momentos (Aquí sigue guardada la foto del equipo en los momentos) -->
-    <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Nuestros Momentos</h3>
-                <button class="close-btn" onclick="closeModal('modal-momentos')">&times;</button>
-            </div>
-            <div class="grid-momentos">
-                <img src="Equipo de trabajo mejor.JPG" alt="Equipo Renacer">
-                <img src="Momentos 1.jpg" alt="Momento 1">
-                <img src="Momentos 2.jpg" alt="Momento 2">
-                <img src="Momentos 3.jpg" alt="Momento 3">
-                <img src="Momentos 4.jpg" alt="Momento 4">
-                <img src="Momentos 5.jpg" alt="Momento 5">
-                <img src="Momentos 6.JPG" alt="Momento 6"> 
-                <img src="Momentos 7.JPG" alt="Momento 7">
-                <img src="Momentos 8.JPG" alt="Momento 8">
-                <img src="Momentos 9.JPG" alt="Momento 9">
-                <img src="Momentos 10.JPG" alt="Momento 10">  
-                <img src="Momentos 11.JPG" alt="Momento 11">
-                <img src="Momentos 12.JPG" alt="Momento 12">
-                <img src="Momentos 13.JPG" alt="Momento 13"> 
-                <img src="Momentos 14.JPG" alt="Momento 14">
-                <img src="Momentos 15.JPG" alt="Momento 15">
-                <img src="Momentos 16.JPG" alt="Momento 16">
-                <img src="Momentos 17.JPG" alt="Momento 17">
-                <img src="Momentos 18.JPG" alt="Momento 18">
-                <img src="Momentos 19.JPG" alt="Momento 19">
-                <img src="Momentos 20.JPG" alt="Momento 20">
-                <img src="Momentos 21.jpg" alt="Momento 21">
-                <img src="Momentos 22.JPG" alt="Momento 22">
-                <img src="Momentos 23.JPG" alt="Momento 23">
-                <img src="Momentos 24.JPG" alt="Momento 24">
-                <img src="Momentos 25.JPG" alt="Momento 25">
-                <img src="Momentos 26.JPG" alt="Momento 26">
-                <img src="Momentos 27.JPG" alt="Momento 27">
-                <img src="Momentos 28.JPG" alt="Momento 28">
-            </div>
-        </div>
-    </div>
+        data.categorias.forEach(cat => {
+          const catTitle = document.createElement('h2');
+          catTitle.className = 'categoria-titulo';
+          catTitle.innerText = cat.nombre;
+          container.appendChild(catTitle);
 
-    <!-- Modal Promociones -->
-    <div id="modal-promos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-promos')">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Promociones</h3>
-                <button class="close-btn" onclick="closeModal('modal-promos')">&times;</button>
-            </div>
-            <div>
-                <div class="promo-card">
-                    <h4>🍹 Happy Hours</h4>
-                    <p class="promo-subtitle">Lunes a Sábado de 8AM a 12PM</p>
-                    <div class="promo-items">
-                        <div class="promo-item">2 Merengadas x $4.50</div>
-                        <div class="promo-item">2 Especiales x $5.60</div>
-                    </div>
-                </div>
-                <div class="promo-card">
-                    <h4>⚡ Tarde de Poder</h4>
-                    <p class="promo-text"><strong>PROTEÍNA GRATIS</strong> en todos los batidos especiales.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+          cat.productos.forEach(prod => {
+            const card = document.createElement('div');
+            card.className = 'producto-card';
 
-    <div class="menu-container">
-        <div class="info-banner">
-            ✨ Añade <strong>Extra de Proteína</strong> por solo <strong>$0.50</strong> ✨
-        </div>
+            const precioUSD = parseFloat(prod.precio);
+            const precioVES = tasaBCV > 0 ? (precioUSD * tasaBCV).toFixed(2) : null;
 
-        <div id="dinamic-menu">
-            <p style="text-align:center; color: var(--dark-pink); font-weight:500; padding: 20px;">Cargando menú y tasa oficial del día...</p>
-        </div>
-    </div>
-
-    <div class="action-bar-container">
-        <button class="btn btn-promo" onclick="openModal('modal-promos')">🎁 Ver Promociones</button>
-        <button class="btn" onclick="openModal('modal-momentos')">✨ Ver Nuestros Momentos</button>
-        <a href="https://instagram.com/renacer.drinks" target="_blank" class="btn">📸 Síguenos en Instagram</a>
-    </div>
-
-    <script>
-        // Forzar inicio de video
-        window.addEventListener('load', function() {
-            var video = document.getElementById('main-video');
-            if (video) {
-                var playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(() => {
-                        document.body.addEventListener('click', function() { video.play(); }, { once: true });
-                    });
-                }
-            }
+            card.innerHTML = `
+              <div class="producto-info">
+                <div class="producto-nombre">${prod.nombre}</div>
+                ${prod.descripcion ? `<div class="producto-desc">${prod.descripcion}</div>` : ''}
+              </div>
+              <div class="producto-precios">
+                <div class="precio-usd">$${precioUSD.toFixed(2)}</div>
+                ${precioVES ? `<div class="precio-ves">Bs. ${precioVES}</div>` : ''}
+              </div>
+            `;
+            container.appendChild(card);
+          });
         });
+      } catch (e) {
+        console.error("Error cargando el menú:", e);
+      }
+    }
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function closeModalOnBackdrop(event, id) { if (event.target === document.getElementById(id)) { closeModal(id); } }
-
-        // --- LÓGICA DE TASA CAMBIARIA BCV AUTOMÁTICA ---
-        let tasaBCV = 0;
-
-        async function obtenerTasaBCV() {
-            // Fuente Primaria: DolarApi Venezuela
-            try {
-                const res = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.promedio) return parseFloat(data.promedio);
-                }
-            } catch (e) {
-                console.warn("Fallo fuente 1 de BCV, intentando respaldo...");
-            }
-
-            // Fuente de Respaldo: DolarVzla CDN
-            try {
-                const res = await fetch('https://rates.dolarvzla.com/bcv/current.json');
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data && data.usd) return parseFloat(data.usd);
-                }
-            } catch (e) {
-                console.error("Fallo fuente de respaldo BCV.");
-            }
-
-            return 0;
-        }
-
-        async function cargarMenu() {
-            tasaBCV = await obtenerTasaBCV();
-            
-            const banner = document.getElementById('tasa-bcv-banner');
-            if (tasaBCV > 0) {
-                banner.innerText = `Tasa Oficial BCV Hoy: Bs. ${tasaBCV.toFixed(2)} / USD`;
-                banner.style.display = 'block';
-            } else {
-                banner.innerText = `Precios expresados en USD`;
-                banner.style.display = 'block';
-            }
-
-            try {
-                const menuResponse = await fetch('menu.json');
-                if (!menuResponse.ok) throw new Error("No se encontró menu.json");
-                const data = await menuResponse.json();
-
-                const menuDiv = document.getElementById('dinamic-menu');
-                menuDiv.innerHTML = '';
-
-                data.categorias.forEach(cat => {
-                    let cardHTML = `
-                        <div class="categoria-card">
-                            <div class="categoria-header">
-                                <span class="decoracion-icono">🌸</span>
-                                <h2 class="categoria-titulo">${cat.nombre}</h2>
-                            </div>
-                    `;
-                    
-                    cat.productos.forEach(prod => {
-                        const precioUSD = parseFloat(prod.precio);
-                        let preciosHTML = '';
-
-                        if (tasaBCV > 0) {
-                            const precioVES = precioUSD * tasaBCV;
-                            preciosHTML = `
-                                <div class="producto-precio-contenedor">
-                                    <span class="producto-precio-usd">$${precioUSD.toFixed(2)}</span>
-                                    <span class="producto-precio-ves">Bs. ${precioVES.toFixed(2)}</span>
-                                </div>
-                            `;
-                        } else {
-                            preciosHTML = `
-                                <div class="producto-precio-contenedor">
-                                    <span class="producto-precio-usd">$${precioUSD.toFixed(2)}</span>
-                                </div>
-                            `;
-                        }
-
-                        cardHTML += `
-                            <div class="producto-item">
-                                <div class="producto-fila">
-                                    <span class="producto-nombre">${prod.nombre}</span>
-                                    ${preciosHTML}
-                                </div>
-                                ${prod.descripcion ? `<div class="producto-descripcion">${prod.descripcion}</div>` : ''}
-                            </div>
-                        `;
-                    });
-                    
-                    cardHTML += `</div>`;
-                    menuDiv.innerHTML += cardHTML;
-                });
-
-            } catch (error) {
-                document.getElementById('dinamic-menu').innerHTML = `<p style="text-align:center; color:red;">Error cargando el menú.</p>`;
-                console.error('Error cargando menú:', error);
-            }
-        }
-
-        cargarMenu();
-    </script>
+    document.addEventListener('DOMContentLoaded', function() {
+      cargarMenu();
+      var video = document.getElementById('bg-video');
+      if (video) {
+        video.play().catch(function(error) {
+          console.log("Autoplay controlado por navegador:", error);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
