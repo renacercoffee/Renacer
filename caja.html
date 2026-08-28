@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renacer Drinks & Coffee - POS Caja</title>
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-dark: #b45309;
+      --bg-color: #f1f5f9;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --border: #cbd5e1;
+      --success: #16a34a;
+      --accent: #f59e0b;
+    }
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+    body { background-color: var(--bg-color); color: var(--text); padding: 12px; max-width: 680px; margin: 0 auto; line-height: 1.4; }
+    
+    .header { text-align: center; margin-bottom: 12px; padding: 12px; background: #7c2d12; color: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .header h1 { font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #fef3c7; }
+    .header p { font-size: 13px; color: #fed7aa; font-weight: 500; }
+
+    .box { background: var(--card-bg); padding: 14px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 12px; border: 1px solid var(--border); }
+    
+    .tasa-box { display: flex; align-items: center; justify-content: space-between; background: #fffbe2; border: 1px solid #fde047; }
+    .tasa-box label { font-weight: 700; color: #854d0e; font-size: 14px; }
+    .tasa-input-wrap { display: flex; align-items: center; gap: 6px; }
+    .tasa-input-wrap span { font-weight: 700; color: #854d0e; }
+    .tasa-box input { width: 110px; padding: 8px 10px; border-radius: 6px; border: 1px solid #eab308; font-size: 16px; font-weight: 700; text-align: right; background: white; color: #713f12; }
+
+    .cat-titulo { font-size: 13px; font-weight: 800; color: #9a3412; text-transform: uppercase; margin: 14px 0 6px 0; letter-spacing: 0.5px; border-bottom: 2px solid #ffedd5; padding-bottom: 4px; }
+    .cat-titulo:first-child { margin-top: 0; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(125px, 1fr)); gap: 8px; }
+    
+    .btn-prod { 
+      background: #fff7ed; 
+      color: #7c2d12; 
+      border: 1px solid #ffedd5; 
+      padding: 10px 6px; 
+      border-radius: 8px; 
+      font-weight: 600; 
+      font-size: 12px; 
+      cursor: pointer; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 4px;
+      transition: all 0.15s ease;
+      min-height: 58px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .btn-prod:active { background: #ffedd5; transform: scale(0.95); }
+    .btn-prod .precio { color: #c2410c; font-weight: 800; font-size: 13px; }
+
+    .ticket { background: #f0fdf4; border: 1px solid #86efac; }
+    .ticket h3 { font-size: 16px; color: #14532d; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    
+    ul#lista { list-style: none; margin-bottom: 10px; max-height: 220px; overflow-y: auto; padding-right: 4px; }
+    li.item-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #cbd5e1; font-size: 13px; }
+    .item-info { font-weight: 600; color: #1e293b; }
+    .item-price { font-weight: 700; color: #0f172a; display: flex; align-items: center; gap: 8px; }
+    .btn-del { background: #ef4444; color: white; border: none; border-radius: 50%; width: 22px; height: 22px; font-size: 13px; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; }
+
+    .totales-box { background: white; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; margin-top: 10px; }
+    .total-line { display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 4px; font-weight: 600; color: #475569; }
+    .total-bs { font-size: 20px; color: #15803d; font-weight: 800; border-top: 2px solid #e2e8f0; padding-top: 6px; margin-top: 6px; }
+
+    .btn-cobrar { 
+      background: var(--success); 
+      color: white; 
+      border: none; 
+      padding: 16px; 
+      width: 100%; 
+      border-radius: 10px; 
+      font-size: 18px; 
+      font-weight: 800; 
+      cursor: pointer; 
+      margin-top: 12px; 
+      box-shadow: 0 4px 6px -1px rgba(22, 163, 74, 0.3);
+      transition: background 0.2s;
+    }
+    .btn-cobrar:active { background: #15803d; transform: scale(0.99); }
+
+    .empty-msg { color: #94a3b8; font-style: italic; font-size: 13px; text-align: center; padding: 12px 0; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Renacer Drinks & Coffee</h1>
+    <p>Sistema de Caja Rápida</p>
+  </div>
+
+  <div class="box tasa-box">
+    <label for="tasaBcv">Tasa BCV del día:</label>
+    <div class="tasa-input-wrap">
+      <span>Bs.</span>
+      <input type="number" id="tasaBcv" value="36.50" step="0.01" oninput="calcular()">
+    </div>
+  </div>
+
+  <div class="box">
+    <div id="contenedorMenu"></div>
+  </div>
+
+  <div class="box ticket">
+    <h3>
+      <span>🛒 Pedido Actual</span>
+      <button onclick="limpiar()" style="background:none; border:none; color:#ef4444; font-size:12px; font-weight:700; cursor:pointer;">[ Limpiar todo ]</button>
+    </h3>
+    
+    <ul id="lista">
+      <li class="empty-msg">No hay productos seleccionados</li>
+    </ul>
+
+    <div class="totales-box">
+      <div class="total-line">
+        <span>Total USD:</span>
+        <span>$<span id="totalUsd">0.00</span></span>
+      </div>
+      <div class="total-line total-bs">
+        <span>Total BS:</span>
+        <span>Bs. <span id="totalBs">0.00</span></span>
+      </div>
+    </div>
+    
+    <button class="btn-cobrar" onclick="registrar()">REGISTRAR VENTA</button>
+  </div>
+
+  <script>
+    const URL_GOOGLE = "https://script.google.com/macros/s/AKfycbwGzjU7IvrswAW62Zp2hvhsvhm8yzUk2Ghepjl1u5Q2hA5M7CuefeZC6AXcqzszmWTbvA/exec";
+
+    const menuData = [
+      {
+        categoria: "Especiales",
+        productos: [
+          {nombre: "Cerelac", precio: 2.70},
+          {nombre: "Tropical", precio: 3.00},
+          {nombre: "Cambur Power", precio: 3.00},
+          {nombre: "Fresa Power", precio: 3.20},
+          {nombre: "Mixto Power", precio: 3.20},
+          {nombre: "Choco/Oreo", precio: 3.20}
+        ]
+      },
+      {
+        categoria: "Línea Fitness",
+        productos: [
+          {nombre: "Renacer Naranja", precio: 1.50},
+          {nombre: "Renacer Rojo", precio: 2.00},
+          {nombre: "Yogurt Griego Nat.", precio: 2.70},
+          {nombre: "Yogurt Griego Esp.", precio: 3.00},
+          {nombre: "Paletas Fitness", precio: 2.50},
+          {nombre: "Paletas Fit. Esp.", precio: 3.00}
+        ]
+      },
+      {
+        categoria: "Refrescantes",
+        productos: [
+          {nombre: "Frappe Parchita", precio: 1.60},
+          {nombre: "Frappe Fresa", precio: 1.80},
+          {nombre: "Frappe Piña", precio: 1.80}
+        ]
+      },
+      {
+        categoria: "Merengadas",
+        productos: [
+          {nombre: "Cambur", precio: 2.50},
+          {nombre: "Fresa", precio: 2.60},
+          {nombre: "Piña", precio: 2.60},
+          {nombre: "Parchita", precio: 2.60},
+          {nombre: "Cambur/Fresa", precio: 2.60}
+        ]
+      },
+      {
+        categoria: "El Despertar",
+        productos: [
+          {nombre: "Espresso Pequeño", precio: 0.60},
+          {nombre: "Espresso Grande", precio: 1.00},
+          {nombre: "Capuchino", precio: 1.50},
+          {nombre: "Capuchino Frío", precio: 2.00}
+        ]
+      },
+      {
+        categoria: "Varios",
+        productos: [
+          {nombre: "Energizante", precio: 1.00},
+          {nombre: "Soda", precio: 1.50},
+          {nombre: "Gatorade", precio: 2.00},
+          {nombre: "Yogurt Natural", precio: 2.00},
+          {nombre: "Tostón", precio: 1.00}
+        ]
+      }
+    ];
+
+    let carrito = [];
+
+    function renderBotones() {
+      const contenedor = document.getElementById('contenedorMenu');
+      contenedor.innerHTML = '';
+
+      menuData.forEach(cat => {
+        const catTitle = document.createElement('div');
+        catTitle.className = 'cat-titulo';
+        catTitle.textContent = cat.categoria;
+        contenedor.appendChild(catTitle);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        cat.productos.forEach(p => {
+          const btn = document.createElement('button');
+          btn.className = 'btn-prod';
+          btn.innerHTML = `<span>${p.nombre}</span><span class="precio">$${p.precio.toFixed(2)}</span>`;
+          btn.onclick = () => agregar(p.nombre, p.precio);
+          grid.appendChild(btn);
+        });
+
+        contenedor.appendChild(grid);
+      });
+    }
+
+    function agregar(nombre, precio) {
+      carrito.push({nombre, precio});
+      calcular();
+    }
+
+    function eliminar(index) {
+      carrito.splice(index, 1);
+      calcular();
+    }
+
+    function limpiar() {
+      carrito = [];
+      calcular();
+    }
+
+    function calcular() {
+      const tasa = parseFloat(document.getElementById('tasaBcv').value) || 0;
+      const ul = document.getElementById('lista');
+      ul.innerHTML = '';
+      let usd = 0;
+
+      if (carrito.length === 0) {
+        ul.innerHTML = '<li class="empty-msg">No hay productos seleccionados</li>';
+        document.getElementById('totalUsd').textContent = '0.00';
+        document.getElementById('totalBs').textContent = '0.00';
+        return;
+      }
+
+      carrito.forEach((p, index) => {
+        usd += p.precio;
+        const itemBs = (p.precio * tasa).toFixed(2);
+        
+        const li = document.createElement('li');
+        li.className = 'item-row';
+        li.innerHTML = `
+          <span class="item-info">${p.nombre}</span>
+          <span class="item-price">
+            $${p.precio.toFixed(2)} (Bs. ${itemBs})
+            <button class="btn-del" onclick="eliminar(${index})">×</button>
+          </span>
+        `;
+        ul.appendChild(li);
+      });
+
+      document.getElementById('totalUsd').textContent = usd.toFixed(2);
+      document.getElementById('totalBs').textContent = (usd * tasa).toFixed(2);
+    }
+
+    async function registrar() {
+      if (carrito.length === 0) return alert("Por favor selecciona al menos un producto.");
+
+      const tasa = parseFloat(document.getElementById('tasaBcv').value);
+      const totalUsd = parseFloat(document.getElementById('totalUsd').textContent);
+      const totalBs = parseFloat(document.getElementById('totalBs').textContent);
+
+      const datos = {
+        fecha: new Date().toLocaleString("es-VE"),
+        productos: carrito,
+        totalUSD: totalUsd,
+        tasaBCV: tasa,
+        totalBS: totalBs,
+        referencia: "Pendiente"
+      };
+
+      try {
+        await fetch(URL_GOOGLE, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(datos)
+        });
+
+        alert("¡Venta registrada exitosamente en Google Sheets!");
+        carrito = [];
+        calcular();
+      } catch (e) {
+        alert("Error al guardar la venta. Verifica tu conexión.");
+      }
+    }
+
+    renderBotones();
+  </script>
+</body>
+</html>
