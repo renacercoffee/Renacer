@@ -28,7 +28,7 @@
     .tasa-box label { font-weight: 700; color: #854d0e; font-size: 14px; }
     .tasa-input-wrap { display: flex; align-items: center; gap: 6px; }
     .tasa-input-wrap span { font-weight: 700; color: #854d0e; }
-    .tasa-box input { width: 120px; padding: 8px 10px; border-radius: 6px; border: 1px solid #eab308; font-size: 15px; font-weight: 700; text-align: right; background: white; color: #713f12; }
+    .tasa-box input { width: 120px; padding: 8px 10px; border-radius: 6px; border: 1px solid #eab308; font-size: 15px; font-weight: 700; text-align: right; background: #fef3c7; color: #713f12; cursor: not-allowed; }
 
     .cat-titulo { font-size: 13px; font-weight: 800; color: #9a3412; text-transform: uppercase; margin: 14px 0 6px 0; letter-spacing: 0.5px; border-bottom: 2px solid #ffedd5; padding-bottom: 4px; }
     .cat-titulo:first-child { margin-top: 0; }
@@ -100,7 +100,7 @@
     <label for="tasaBcv">Tasa BCV del día:</label>
     <div class="tasa-input-wrap">
       <span>Bs.</span>
-      <input type="number" id="tasaBcv" value="0.00" step="0.01" oninput="calcular()">
+      <input type="number" id="tasaBcv" value="0.00" step="0.01" oninput="calcular()" readonly>
     </div>
   </div>
 
