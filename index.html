@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary-pink: #e6396e;
-            --dark-pink: #b81d4c; /* Color corporativo del logo */
+            --dark-pink: #b81d4c;
             --soft-pink: #ffd1dc;
             --light-bg: #fff5f7;
             --text-dark: #2d2d2d;
@@ -27,19 +27,38 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* --- TASA BCV BANNER --- */
+        #tasa-bcv-banner {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.82);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.88rem;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            z-index: 150;
+            backdrop-filter: blur(6px);
+            display: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+        }
+
         /* --- HERO HEADER CON VIDEO DE FONDO --- */
         .hero-header {
             position: relative;
             width: 100%;
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             box-sizing: border-box;
-            padding: 40px 20px;
+            padding: 80px 20px 40px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #000;
         }
 
         .bg-video {
@@ -53,6 +72,8 @@
             z-index: 1;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            visibility: visible;
+            opacity: 1;
         }
 
         .video-overlay {
@@ -61,7 +82,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.65) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 2;
         }
 
@@ -78,11 +99,11 @@
 
         .equipo-container {
             width: 100%;
-            max-width: 480px;
+            max-width: 450px;
             margin-bottom: 25px;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
@@ -93,7 +114,6 @@
             object-fit: cover;
         }
 
-        /* Logotipo Digital sobre Video */
         .logo-digital {
             display: flex;
             flex-direction: column;
@@ -111,7 +131,7 @@
             line-height: 1;
             margin: 0;
             font-family: 'Arial Black', Impact, sans-serif;
-            text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.8);
         }
 
         .logo-txt-sub {
@@ -122,7 +142,7 @@
             text-transform: uppercase;
             margin-top: 5px;
             margin-bottom: 15px;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
         }
 
         .hero-content p.slogan {
@@ -132,316 +152,77 @@
             letter-spacing: 1.2px;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.7);
-            border-top: 2px solid rgba(255, 209, 220, 0.6);
+            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
+            border-top: 2px solid rgba(255, 209, 220, 0.5);
             padding-top: 12px;
             width: 85%;
         }
 
-        /* Ventana Flotante Modal */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 200;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            justify-content: center;
-            align-items: center;
-        }
+        /* --- MODALES --- */
+        .modal { display: none; position: fixed; z-index: 200; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 25px; border-radius: 24px; width: 90%; max-width: 450px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: fadeIn 0.3s ease; position: relative; max-height: 80vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; position: sticky; top: 0; background: white; z-index: 10; }
+        .modal-header h3 { margin: 0; color: var(--dark-pink); text-transform: uppercase; letter-spacing: 1px; }
+        .close-btn { background: none; border: none; font-size: 1.6rem; color: var(--text-muted); cursor: pointer; }
+        .grid-momentos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding-right: 5px; }
+        .grid-momentos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .promo-card { background: rgba(255, 245, 247, 0.6); border: 2px dashed var(--soft-pink); border-radius: 16px; padding: 20px 15px; margin-bottom: 15px; text-align: center; }
+        .promo-card h4 { color: var(--primary-pink); font-size: 1.3rem; margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .promo-subtitle { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 15px 0; font-weight: 600; }
+        .promo-items { display: flex; flex-direction: column; gap: 10px; }
+        .promo-item { background: white; color: var(--dark-pink); font-weight: 700; font-size: 1.1rem; padding: 12px; border-radius: 12px; box-shadow: 0 4px 10px rgba(230, 57, 110, 0.08); }
+        @keyframes fadeIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .modal-content {
-            background: white;
-            padding: 25px;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            animation: fadeIn 0.3s ease;
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--light-bg);
-            padding-bottom: 10px;
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 10;
-        }
-
-        .modal-header h3 {
-            margin: 0;
-            color: var(--dark-pink);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.6rem;
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-
-        /* Estilos Momentos */
-        .grid-momentos {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            padding-right: 5px;
-        }
-
-        .grid-momentos img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* Estilos Promociones */
-        .promo-card {
-            background: rgba(255, 245, 247, 0.6);
-            border: 2px dashed var(--soft-pink);
-            border-radius: 16px;
-            padding: 20px 15px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
+        /* --- CONTENEDOR Y PRODUCTOS --- */
+        .menu-container { width: 92%; max-width: 550px; margin-top: 30px; margin-bottom: 220px; }
+        .categoria-card { background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 24px; padding: 25px 22px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(230, 57, 110, 0.08); border: 1px solid rgba(255, 255, 255, 0.8); }
+        .categoria-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; }
+        .categoria-titulo { color: var(--dark-pink); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin: 0; }
+        .decoracion-icono { color: var(--dark-pink); font-size: 1.2rem; }
         
-        .promo-card:last-child {
-            margin-bottom: 0;
-        }
+        .producto-item { margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px dashed var(--soft-pink); }
+        .producto-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+        .producto-fila { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .producto-nombre { font-size: 1.1rem; font-weight: 600; color: #1a1a1a; max-width: 58%; }
+        
+        /* Precios Dobles */
+        .producto-precio-contenedor { display: flex; flex-direction: column; align-items: flex-end; text-align: right; white-space: nowrap; }
+        .producto-precio-usd { font-size: 1.15rem; font-weight: 800; color: var(--dark-pink); }
+        .producto-precio-ves { font-size: 0.82rem; font-weight: 700; color: #555555; margin-top: 2px; background: #fff0f3; padding: 2px 6px; border-radius: 6px; }
+        .producto-descripcion { font-size: 0.88rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4; max-width: 90%; }
 
-        .promo-card h4 {
-            color: var(--primary-pink);
-            font-size: 1.3rem;
-            margin: 0 0 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .promo-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin: 0 0 15px 0;
-            font-weight: 600;
-        }
-
-        .promo-items {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .promo-item {
-            background: white;
-            color: var(--dark-pink);
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 12px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(230, 57, 110, 0.08);
-        }
-
-        .promo-text {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        .promo-limit {
-            font-size: 0.85rem;
-            color: var(--primary-pink);
-            font-weight: bold;
-            margin-top: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes fadeIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* Contenedor Principal del Menú */
-        .menu-container {
-            width: 92%;
-            max-width: 550px;
-            margin-top: 30px;
-            margin-bottom: 220px;
-        }
-
-        .categoria-card {
-            background: rgba(255, 255, 255, 0.96);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            border-radius: 24px;
-            padding: 25px 22px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(230, 57, 110, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .categoria-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--light-bg);
-            padding-bottom: 10px;
-        }
-
-        .categoria-titulo {
-            color: var(--dark-pink);
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            margin: 0;
-        }
-
-        .decoracion-icono {
-            color: var(--dark-pink);
-            font-size: 1.2rem;
-        }
-
-        .producto-item {
-            margin-bottom: 20px;
-            padding-bottom: 5px;
-        }
-
-        .producto-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .producto-fila {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 15px;
-        }
-
-        .producto-nombre {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .producto-puntos {
-            flex-grow: 1;
-            border-bottom: 1px dotted var(--soft-pink);
-            position: relative;
-            top: -4px;
-        }
-
-        .producto-precio {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--dark-pink);
-            white-space: nowrap;
-        }
-
-        .producto-descripcion {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-            line-height: 1.4;
-            max-width: 90%;
-        }
-
-        .info-banner {
-            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
-            color: white;
-            border-radius: 18px;
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(230, 57, 110, 0.2);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        .info-banner strong {
-            font-size: 1.1rem;
-            color: #fff;
-        }
-
-        /* Sistema de Barras Fijas */
-        .action-bar-container {
-            position: fixed;
-            bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 92%;
-            max-width: 520px;
-            z-index: 100;
-            box-sizing: border-box;
-        }
-
-        .btn {
-            width: 100%;
-            height: 50px;
-            border-radius: 18px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-            box-shadow: 0 6px 20px rgba(184, 29, 76, 0.25);
-            border: none;
-            cursor: pointer;
-            box-sizing: border-box;
-            background: var(--dark-pink);
-        }
-
-        .btn-promo {
-            background: var(--primary-pink);
-        }
-
-        .btn:active {
-            transform: scale(0.97);
-        }
+        .info-banner { background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)); color: white; border-radius: 18px; padding: 15px; text-align: center; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(230, 57, 110, 0.2); font-size: 0.95rem; font-weight: 500; }
+        .action-bar-container { position: fixed; bottom: 20px; display: flex; flex-direction: column; gap: 10px; width: 92%; max-width: 520px; z-index: 100; box-sizing: border-box; }
+        .btn { width: 100%; height: 50px; border-radius: 18px; text-decoration: none; color: white; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease; box-shadow: 0 6px 20px rgba(184, 29, 76, 0.3); border: none; cursor: pointer; background: var(--dark-pink); }
+        .btn-promo { background: var(--primary-pink); }
+        .btn:active { transform: scale(0.97); }
 
         @media (max-width: 480px) {
-            .equipo-container { max-width: 100%; }
+            .hero-header { min-height: 70vh; padding-top: 70px; }
             .logo-txt-principal { font-size: 2.8rem; }
-            .producto-nombre, .producto-precio { font-size: 1.05rem; }
-            .hero-content p.slogan { font-size: 0.95rem; }
+            .producto-nombre { font-size: 1rem; }
+            .producto-precio-usd { font-size: 1.05rem; }
+            .hero-content p.slogan { font-size: 0.9rem; width: 95%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Banner de Tasa BCV Oficial -->
+    <div id="tasa-bcv-banner">Obteniendo tasa oficial BCV...</div>
+
     <!-- Header Principal con Video de Fondo -->
     <header class="hero-header">
-        <video autoplay muted loop playsinline class="bg-video">
+        <video autoplay muted loop playsinline preload="auto" class="bg-video" id="main-video">
             <source src="video.MP4" type="video/mp4">
-            Tu navegador no soporta videos en HTML5.
+            Tu navegador no soporta videos.
         </video>
         
         <div class="video-overlay"></div>
 
         <div class="hero-content">
             <div class="equipo-container">
-                <img src="Equipo de trabajo mejor.JPG" alt="Equipo de trabajo">
+                <img src="Equipo de trabajo mejor.JPG" alt="Equipo Renacer">
             </div>
             
             <div class="logo-digital">
@@ -453,7 +234,7 @@
         </div>
     </header>
 
-    <!-- Modal de Momentos -->
+    <!-- Modal Momentos -->
     <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -493,7 +274,7 @@
         </div>
     </div>
 
-    <!-- Modal de Promociones -->
+    <!-- Modal Promociones -->
     <div id="modal-promos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-promos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -503,17 +284,15 @@
             <div>
                 <div class="promo-card">
                     <h4>🍹 Happy Hours</h4>
-                    <p class="promo-subtitle">Lunes a Sabado de 8AM a 12PM</p>
+                    <p class="promo-subtitle">Lunes a Sábado de 8AM a 12PM</p>
                     <div class="promo-items">
                         <div class="promo-item">2 Merengadas x $4.50</div>
                         <div class="promo-item">2 Especiales x $5.60</div>
                     </div>
                 </div>
-
                 <div class="promo-card">
                     <h4>⚡ Tarde de Poder</h4>
-                    <p class="promo-text"><strong>PROTEINA GRATIS</strong> en todos los batidos especiales.</p>
-                    <p class="promo-limit">⏳ Solo por tiempo limitado</p>
+                    <p class="promo-text"><strong>PROTEÍNA GRATIS</strong> en todos los batidos especiales.</p>
                 </div>
             </div>
         </div>
@@ -521,48 +300,87 @@
 
     <div class="menu-container">
         <div class="info-banner">
-            ✨ Puedes añadir <strong>Extra de Proteina a tu Batido</strong> por <strong>$0.50</strong> ✨
+            ✨ Añade <strong>Extra de Proteína</strong> por solo <strong>$0.50</strong> ✨
         </div>
 
         <div id="dinamic-menu">
-            <p style="text-align:center; color: var(--dark-pink); font-weight:500;">Cargando exquisito menú...</p>
+            <p style="text-align:center; color: var(--dark-pink); font-weight:500; padding: 20px;">Cargando menú y tasa oficial del día...</p>
         </div>
     </div>
 
     <div class="action-bar-container">
-        <button class="btn btn-promo" onclick="openModal('modal-promos')">
-            🎁 Ver Promociones
-        </button>
-
-        <button class="btn" onclick="openModal('modal-momentos')">
-            ✨ Ver Nuestros Momentos
-        </button>
-        
-        <a href="https://instagram.com/renacer.drinks" target="_blank" class="btn">
-            📸 Síguenos en Instagram
-        </a>
+        <button class="btn btn-promo" onclick="openModal('modal-promos')">🎁 Ver Promociones</button>
+        <button class="btn" onclick="openModal('modal-momentos')">✨ Ver Nuestros Momentos</button>
+        <a href="https://instagram.com/renacer.drinks" target="_blank" class="btn">📸 Síguenos en Instagram</a>
     </div>
 
     <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-        function closeModalOnBackdrop(event, id) {
-            if (event.target === document.getElementById(id)) {
-                closeModal(id);
+        // Forzar inicio de video
+        window.addEventListener('load', function() {
+            var video = document.getElementById('main-video');
+            if (video) {
+                var playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        document.body.addEventListener('click', function() { video.play(); }, { once: true });
+                    });
+                }
             }
+        });
+
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function closeModalOnBackdrop(event, id) { if (event.target === document.getElementById(id)) { closeModal(id); } }
+
+        // --- LÓGICA DE TASA CAMBIARIA BCV AUTOMÁTICA ---
+        let tasaBCV = 0;
+
+        async function obtenerTasaBCV() {
+            // Fuente Primaria: DolarApi Venezuela
+            try {
+                const res = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.promedio) return parseFloat(data.promedio);
+                }
+            } catch (e) {
+                console.warn("Fallo fuente 1 de BCV, intentando respaldo...");
+            }
+
+            // Fuente de Respaldo: DolarVzla CDN
+            try {
+                const res = await fetch('https://rates.dolarvzla.com/bcv/current.json');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.usd) return parseFloat(data.usd);
+                }
+            } catch (e) {
+                console.error("Fallo fuente de respaldo BCV.");
+            }
+
+            return 0;
         }
 
-        // Script de carga dinámica
-        fetch('menu.json')
-            .then(response => response.json())
-            .then(data => {
+        async function cargarMenu() {
+            tasaBCV = await obtenerTasaBCV();
+            
+            const banner = document.getElementById('tasa-bcv-banner');
+            if (tasaBCV > 0) {
+                banner.innerText = `Tasa Oficial BCV Hoy: Bs. ${tasaBCV.toFixed(2)} / USD`;
+                banner.style.display = 'block';
+            } else {
+                banner.innerText = `Precios expresados en USD`;
+                banner.style.display = 'block';
+            }
+
+            try {
+                const menuResponse = await fetch('menu.json');
+                if (!menuResponse.ok) throw new Error("No se encontró menu.json");
+                const data = await menuResponse.json();
+
                 const menuDiv = document.getElementById('dinamic-menu');
                 menuDiv.innerHTML = '';
-                
+
                 data.categorias.forEach(cat => {
                     let cardHTML = `
                         <div class="categoria-card">
@@ -573,12 +391,30 @@
                     `;
                     
                     cat.productos.forEach(prod => {
+                        const precioUSD = parseFloat(prod.precio);
+                        let preciosHTML = '';
+
+                        if (tasaBCV > 0) {
+                            const precioVES = precioUSD * tasaBCV;
+                            preciosHTML = `
+                                <div class="producto-precio-contenedor">
+                                    <span class="producto-precio-usd">$${precioUSD.toFixed(2)}</span>
+                                    <span class="producto-precio-ves">Bs. ${precioVES.toFixed(2)}</span>
+                                </div>
+                            `;
+                        } else {
+                            preciosHTML = `
+                                <div class="producto-precio-contenedor">
+                                    <span class="producto-precio-usd">$${precioUSD.toFixed(2)}</span>
+                                </div>
+                            `;
+                        }
+
                         cardHTML += `
                             <div class="producto-item">
                                 <div class="producto-fila">
                                     <span class="producto-nombre">${prod.nombre}</span>
-                                    <div class="producto-puntos"></div>
-                                    <span class="producto-precio">$${parseFloat(prod.precio).toFixed(2)}</span>
+                                    ${preciosHTML}
                                 </div>
                                 ${prod.descripcion ? `<div class="producto-descripcion">${prod.descripcion}</div>` : ''}
                             </div>
@@ -588,15 +424,14 @@
                     cardHTML += `</div>`;
                     menuDiv.innerHTML += cardHTML;
                 });
-            })
-            .catch(error => {
-                document.getElementById('dinamic-menu').innerHTML = 
-                    `<div class="categoria-card" style="text-align:center; color:red;">
-                        <h3>¡Ups! Hubo un problema al cargar los precios.</h3>
-                        <p>Por favor, verifica que tu archivo en GitHub se llame 'menu.json' en minúsculas.</p>
-                     </div>`;
-                console.error('Error:', error);
-            });
+
+            } catch (error) {
+                document.getElementById('dinamic-menu').innerHTML = `<p style="text-align:center; color:red;">Error cargando el menú.</p>`;
+                console.error('Error cargando menú:', error);
+            }
+        }
+
+        cargarMenu();
     </script>
 </body>
 </html>
