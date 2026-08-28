@@ -16,9 +16,9 @@
       "productos": [
         {"nombre": "Renacer Naranja", "precio": "1.50", "descripcion": "Naranja, Piña, Jengibre"},
         {"nombre": "Renacer Rojo", "precio": "2.00", "descripcion": "Zanahoria, Remolacha, Manzana Verde, Fresa, Limón"},
+        {"nombre": "Paletas Fitness", "precio": "2.50", "descripcion": ""},
         {"nombre": "Yogurt Griego Natural", "precio": "2.70", "descripcion": ""},
         {"nombre": "Yogurt Griego Especial", "precio": "3.00", "descripcion": ""},
-        {"nombre": "Paletas Fitness", "precio": "2.50", "descripcion": ""},
         {"nombre": "Paletas Fitness Especial", "precio": "3.00", "descripcion": ""}
       ]
     },
@@ -50,13 +50,17 @@
       ]
     },
     {
-      "nombre": "Varios",
+      "nombre": "Adicionales y Extras",
       "productos": [
+        {"nombre": "Proteína", "precio": "0.50", "descripcion": ""},
+        {"nombre": "Granola", "precio": "0.50", "descripcion": ""},
+        {"nombre": "Papas", "precio": "1.00", "descripcion": ""},
+        {"nombre": "Toston", "precio": "1.00", "descripcion": ""},
         {"nombre": "Energizante", "precio": "1.00", "descripcion": ""},
         {"nombre": "Soda", "precio": "1.50", "descripcion": ""},
+        {"nombre": "C4 Pre-Work", "precio": "1.50", "descripcion": ""},
         {"nombre": "Gatorade", "precio": "2.00", "descripcion": ""},
-        {"nombre": "Yogurt Natural", "precio": "2.00", "descripcion": ""},
-        {"nombre": "Toston", "precio": "1.00", "descripcion": ""}
+        {"nombre": "Yogurt Natural", "precio": "2.00", "descripcion": ""}
       ]
     }
   ]
