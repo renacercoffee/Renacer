@@ -3,12 +3,12 @@
     {
       "nombre": "Especiales",
       "productos": [
-        {"nombre": "Tropical", "precio": "3.00", "descripcion": "Piña, Coco, Leche Condensada, Leche"},
-        {"nombre": "Cambur Power", "precio": "3.00", "descripcion": "Leche, Avena, Mantequilla de Maní, Azucar. Ideal Post-Entreno"},
-        {"nombre": "Fresa Power", "precio": "3.20", "descripcion": "Leche, Avena, Mantequilla de Mani, Azucar. Ideal Post-Entreno"},
-        {"nombre": "Mixto Power", "precio": "3.20", "descripcion": "Fresa, Cambur, Leche, Avena, Mantequilla de Maní, Azucar. Ideal Post-Entreno"},
-        {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo"},
         {"nombre": "Cerelac", "precio": "2.70", "descripcion": "Leche, Hielo, Azúcar"}
+        {"nombre": "Tropical", "precio": "3.00", "descripcion": "Piña, Coco, Leche Condensada, Leche"},
+        {"nombre": "Cambur Power", "precio": "3.00", "descripcion": "Leche, Avena, Mantequilla de Maní, Vainilla, Azucar. Ideal Post-Entreno"},
+        {"nombre": "Fresa Power", "precio": "3.20", "descripcion": "Leche, Avena, Mantequilla de Mani, Vainilla, Azucar. Ideal Post-Entreno"},
+        {"nombre": "Mixto Power", "precio": "3.20", "descripcion": "Fresa, Cambur, Leche, Avena, Mantequilla de Maní, Vainilla, Azucar. Ideal Post-Entreno"},
+        {"nombre": "Choco/Oreo", "precio": "3.20", "descripcion": "Toddy, Oreo, Leche, Hielo"}
       ]
     },
     {
