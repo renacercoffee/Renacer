@@ -157,7 +157,7 @@
         @keyframes fadeIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         /* --- CONTENEDOR Y PRODUCTOS --- */
-        .menu-container { width: 92%; max-width: 550px; margin-top: 30px; margin-bottom: 220px; }
+        .menu-container { width: 92%; max-width: 550px; margin-top: 30px; margin-bottom: 120px; }
         .categoria-card { background: rgba(255, 255, 255, 0.96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 24px; padding: 25px 22px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(230, 57, 110, 0.08); border: 1px solid rgba(255, 255, 255, 0.8); }
         .categoria-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid var(--light-bg); padding-bottom: 10px; }
         .categoria-titulo { color: var(--dark-pink); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin: 0; }
@@ -174,7 +174,47 @@
         .producto-precio-ves { font-size: 0.82rem; font-weight: 700; color: #555555; margin-top: 2px; background: #fff0f3; padding: 2px 6px; border-radius: 6px; }
         .producto-descripcion { font-size: 0.88rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4; max-width: 90%; }
 
-        .info-banner { background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)); color: white; border-radius: 18px; padding: 15px; text-align: center; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(230, 57, 110, 0.2); font-size: 0.95rem; font-weight: 500; }
+        /* Banner de Extras / Potenciadores */
+        .info-banner { 
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink)); 
+            color: white; 
+            border-radius: 20px; 
+            padding: 18px 15px; 
+            text-align: center; 
+            margin-bottom: 25px; 
+            box-shadow: 0 8px 20px rgba(230, 57, 110, 0.2); 
+        }
+        .info-banner-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 6px;
+        }
+        .info-banner-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .info-banner-item {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .info-banner-item strong {
+            color: #ffeef2;
+        }
+        .info-banner-ideal {
+            font-size: 0.82rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Sección de botones fijos dentro de la página */
+        .static-buttons-container { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; margin-bottom: 20px; }
+
+        /* Barra flotante inferior exclusiva para Promociones */
         .action-bar-container { position: fixed; bottom: 20px; display: flex; flex-direction: column; gap: 10px; width: 92%; max-width: 520px; z-index: 100; box-sizing: border-box; }
         .btn { width: 100%; height: 50px; border-radius: 18px; text-decoration: none; color: white; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s ease; box-shadow: 0 6px 20px rgba(184, 29, 76, 0.3); border: none; cursor: pointer; background: var(--dark-pink); }
         .btn-promo { background: var(--primary-pink); }
@@ -213,7 +253,7 @@
         </div>
     </header>
 
-    <!-- Modal Momentos (Aquí sigue guardada la foto del equipo en los momentos) -->
+    <!-- Modal Momentos -->
     <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -264,34 +304,54 @@
             <div>
                 <div class="promo-card">
                     <h4>🍹 Happy Hours</h4>
-                    <p class="promo-subtitle">Lunes a Sábado de 8AM a 12PM</p>
+                    <p class="promo-subtitle">7AM Hasta 4PM</p>
                     <div class="promo-items">
-                        <div class="promo-item">2 Merengadas x $4.50</div>
-                        <div class="promo-item">2 Especiales x $5.60</div>
+                        <div class="promo-item">2 Refrescantes x $3</div>
+                        <div class="promo-item">2 Merengadas x $4</div>
+                        <div class="promo-item">2 Especiales x $5</div>
                     </div>
                 </div>
                 <div class="promo-card">
-                    <h4>⚡ Tarde de Poder</h4>
-                    <p class="promo-text"><strong>PROTEÍNA GRATIS</strong> en todos los batidos especiales.</p>
+                    <h4>🔥 Sábados de Locura</h4>
+                    <p class="promo-subtitle">Todos los Sábados</p>
+                    <div class="promo-items">
+                        <div class="promo-item">Todos los Refrescantes en $1.5</div>
+                        <div class="promo-item">Todas las Merengadas en $2</div>
+                        <div class="promo-item">Todos los Especiales en $2.5</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="menu-container">
+        <!-- Banner de Potencia tu bebida -->
         <div class="info-banner">
-            ✨ Añade <strong>Extra de Proteína</strong> por solo <strong>$0.50</strong> ✨
+            <div class="info-banner-title">⚡ Potencia tu bebida ⚡</div>
+            <div class="info-banner-grid">
+                <div class="info-banner-item">
+                    <strong>Proteína $0.50</strong> <span class="info-banner-ideal">(Ideal en batidos)</span>
+                </div>
+                <div class="info-banner-item">
+                    <strong>C4 Pre-Work $1.50</strong> <span class="info-banner-ideal">(Ideal para Refrescantes)</span>
+                </div>
+            </div>
         </div>
 
         <div id="dinamic-menu">
             <p style="text-align:center; color: var(--dark-pink); font-weight:500; padding: 20px;">Cargando menú y tasa oficial del día...</p>
         </div>
+
+        <!-- Botones fijos al final de la página -->
+        <div class="static-buttons-container">
+            <button class="btn" onclick="openModal('modal-momentos')">✨ Ver Nuestros Momentos</button>
+            <a href="https://instagram.com/renacer.drinks" target="_blank" class="btn">📸 Síguenos en Instagram</a>
+        </div>
     </div>
 
+    <!-- Barra flotante única para promociones -->
     <div class="action-bar-container">
         <button class="btn btn-promo" onclick="openModal('modal-promos')">🎁 Ver Promociones</button>
-        <button class="btn" onclick="openModal('modal-momentos')">✨ Ver Nuestros Momentos</button>
-        <a href="https://instagram.com/renacer.drinks" target="_blank" class="btn">📸 Síguenos en Instagram</a>
     </div>
 
     <script>
@@ -316,7 +376,6 @@
         let tasaBCV = 0;
 
         async function obtenerTasaBCV() {
-            // Fuente Primaria: DolarApi Venezuela
             try {
                 const res = await fetch('https://ve.dolarapi.com/v1/dolares/oficial');
                 if (res.ok) {
@@ -327,7 +386,6 @@
                 console.warn("Fallo fuente 1 de BCV, intentando respaldo...");
             }
 
-            // Fuente de Respaldo: DolarVzla CDN
             try {
                 const res = await fetch('https://rates.dolarvzla.com/bcv/current.json');
                 if (res.ok) {
