@@ -82,7 +82,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
             z-index: 2;
         }
 
@@ -97,23 +97,6 @@
             text-align: center;
         }
 
-        .equipo-container {
-            width: 100%;
-            max-width: 450px;
-            margin-bottom: 25px;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .equipo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
         .logo-digital {
             display: flex;
             flex-direction: column;
@@ -123,7 +106,7 @@
         }
 
         .logo-txt-principal {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 900;
             color: #ffffff;
             letter-spacing: 4px;
@@ -131,18 +114,18 @@
             line-height: 1;
             margin: 0;
             font-family: 'Arial Black', Impact, sans-serif;
-            text-shadow: 2px 3px 10px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 3px 12px rgba(0, 0, 0, 0.9);
         }
 
         .logo-txt-sub {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--soft-pink);
             letter-spacing: 6px;
             text-transform: uppercase;
             margin-top: 5px;
-            margin-bottom: 15px;
-            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.8);
         }
 
         .hero-content p.slogan {
@@ -152,9 +135,9 @@
             letter-spacing: 1.2px;
             font-weight: 700;
             text-transform: uppercase;
-            text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.8);
-            border-top: 2px solid rgba(255, 209, 220, 0.5);
-            padding-top: 12px;
+            text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.9);
+            border-top: 2px solid rgba(255, 209, 220, 0.6);
+            padding-top: 14px;
             width: 85%;
         }
 
@@ -199,7 +182,7 @@
 
         @media (max-width: 480px) {
             .hero-header { min-height: 70vh; padding-top: 70px; }
-            .logo-txt-principal { font-size: 2.8rem; }
+            .logo-txt-principal { font-size: 3rem; }
             .producto-nombre { font-size: 1rem; }
             .producto-precio-usd { font-size: 1.05rem; }
             .hero-content p.slogan { font-size: 0.9rem; width: 95%; }
@@ -211,7 +194,7 @@
     <!-- Banner de Tasa BCV Oficial -->
     <div id="tasa-bcv-banner">Obteniendo tasa oficial BCV...</div>
 
-    <!-- Header Principal con Video de Fondo -->
+    <!-- Header Principal con Video de Fondo Limpio -->
     <header class="hero-header">
         <video autoplay muted loop playsinline preload="auto" class="bg-video" id="main-video">
             <source src="video.MP4" type="video/mp4">
@@ -221,10 +204,6 @@
         <div class="video-overlay"></div>
 
         <div class="hero-content">
-            <div class="equipo-container">
-                <img src="Equipo de trabajo mejor.JPG" alt="Equipo Renacer">
-            </div>
-            
             <div class="logo-digital">
                 <h1 class="logo-txt-principal">Renacer</h1>
                 <span class="logo-txt-sub">Drinks & Coffee</span>
@@ -234,7 +213,7 @@
         </div>
     </header>
 
-    <!-- Modal Momentos -->
+    <!-- Modal Momentos (Aquí sigue guardada la foto del equipo en los momentos) -->
     <div id="modal-momentos" class="modal" onclick="closeModalOnBackdrop(event, 'modal-momentos')">
         <div class="modal-content">
             <div class="modal-header">
@@ -242,6 +221,7 @@
                 <button class="close-btn" onclick="closeModal('modal-momentos')">&times;</button>
             </div>
             <div class="grid-momentos">
+                <img src="Equipo de trabajo mejor.JPG" alt="Equipo Renacer">
                 <img src="Momentos 1.jpg" alt="Momento 1">
                 <img src="Momentos 2.jpg" alt="Momento 2">
                 <img src="Momentos 3.jpg" alt="Momento 3">
