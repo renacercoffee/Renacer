@@ -28,7 +28,7 @@
     .tasa-box label { font-weight: 700; color: #854d0e; font-size: 14px; }
     .tasa-input-wrap { display: flex; align-items: center; gap: 6px; }
     .tasa-input-wrap span { font-weight: 700; color: #854d0e; }
-    .tasa-box input { width: 110px; padding: 8px 10px; border-radius: 6px; border: 1px solid #eab308; font-size: 16px; font-weight: 700; text-align: right; background: white; color: #713f12; }
+    .tasa-box input { width: 120px; padding: 8px 10px; border-radius: 6px; border: 1px solid #eab308; font-size: 15px; font-weight: 700; text-align: right; background: white; color: #713f12; }
 
     .cat-titulo { font-size: 13px; font-weight: 800; color: #9a3412; text-transform: uppercase; margin: 14px 0 6px 0; letter-spacing: 0.5px; border-bottom: 2px solid #ffedd5; padding-bottom: 4px; }
     .cat-titulo:first-child { margin-top: 0; }
@@ -100,7 +100,7 @@
     <label for="tasaBcv">Tasa BCV del día:</label>
     <div class="tasa-input-wrap">
       <span>Bs.</span>
-      <input type="number" id="tasaBcv" value="36.50" step="0.01" oninput="calcular()">
+      <input type="text" id="tasaBcv" value="Cargando..." oninput="calcular()">
     </div>
   </div>
 
@@ -272,6 +272,23 @@
       document.getElementById('totalBs').textContent = (usd * tasa).toFixed(2);
     }
 
+    async function obtenerTasaBCV() {
+      const inputTasa = document.getElementById('tasaBcv');
+
+      try {
+        const respuesta = await fetch("https://pydolarvenezuela-api.vercel.app/api/v1/dollar?page=bcv");
+        const datos = await respuesta.json();
+        
+        const tasaActual = datos.monedas.usd.promedio;
+        inputTasa.value = tasaActual.toFixed(2);
+        calcular();
+      } catch (error) {
+        console.error("Error al obtener la tasa BCV:", error);
+        inputTasa.value = "36.50";
+        calcular();
+      }
+    }
+
     async function registrar() {
       if (carrito.length === 0) return alert("Por favor selecciona al menos un producto.");
 
@@ -305,6 +322,7 @@
     }
 
     renderBotones();
+    obtenerTasaBCV();
   </script>
 </body>
 </html>
