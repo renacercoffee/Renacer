@@ -32,27 +32,28 @@
     .cat-titulo { font-size: 14px; font-weight: 900; color: #7c2d12; text-transform: uppercase; margin: 16px 0 8px 0; letter-spacing: 0.5px; border-bottom: 3px solid #fdba74; padding-bottom: 4px; }
     .cat-titulo:first-child { margin-top: 0; }
     
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
     
     .btn-prod { 
       background: #ffffff; 
       color: #000000; 
       border: 2px solid #cbd5e1; 
-      padding: 10px 6px; 
+      padding: 10px 8px; 
       border-radius: 8px; 
       font-weight: 800; 
-      font-size: 13px; 
+      font-size: 12px; 
       cursor: pointer; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      justify-content: center; 
-      gap: 4px;
+      justify-content: space-between; 
+      gap: 6px;
       transition: all 0.1s ease;
-      min-height: 62px;
+      min-height: 70px;
       text-align: center;
       box-shadow: 0 2px 3px rgba(0,0,0,0.08);
       text-transform: uppercase;
+      word-break: break-word;
     }
     .btn-prod:active { background: #ffedd5; border-color: #c2410c; transform: scale(0.96); }
     .btn-prod .precio { color: #c2410c; font-weight: 900; font-size: 14px; }
@@ -61,10 +62,10 @@
     .ticket h3 { font-size: 16px; color: #14532d; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; font-weight: 900; text-transform: uppercase; }
     
     ul#lista { list-style: none; margin-bottom: 10px; max-height: 240px; overflow-y: auto; padding-right: 4px; }
-    li.item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #94a3b8; font-size: 14px; }
+    li.item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px dashed #94a3b8; font-size: 14px; gap: 8px; }
     .item-info { font-weight: 800; color: #000000; text-transform: uppercase; }
-    .item-price { font-weight: 900; color: #000000; display: flex; align-items: center; gap: 8px; }
-    .btn-del { background: #dc2626; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 14px; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; }
+    .item-price { font-weight: 900; color: #000000; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .btn-del { background: #dc2626; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 14px; line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
 
     .totales-box { background: white; padding: 12px; border-radius: 8px; border: 2px solid #94a3b8; margin-top: 10px; }
     .total-line { display: flex; justify-content: space-between; font-size: 16px; margin-bottom: 4px; font-weight: 800; color: #000000; text-transform: uppercase; }
@@ -146,7 +147,7 @@
           {nombre: "CAMBUR POWER", precio: 3.00},
           {nombre: "FRESA POWER", precio: 3.20},
           {nombre: "MIXTO POWER", precio: 3.20},
-          {nombre: "CHOCO / OREO", precio: 3.20}
+          {nombre: "CHOCOLATE Y OREO", precio: 3.20}
         ]
       },
       {
@@ -155,17 +156,17 @@
           {nombre: "RENACER NARANJA", precio: 1.50},
           {nombre: "RENACER ROJO", precio: 2.00},
           {nombre: "PALETAS FITNESS", precio: 2.50},
-          {nombre: "YOGURT GRIEGO NAT.", precio: 2.70},
-          {nombre: "YOGURT GRIEGO ESP.", precio: 3.00},
-          {nombre: "PALETAS FIT. ESP.", precio: 3.00}
+          {nombre: "YOGURT GRIEGO NATURAL", precio: 2.70},
+          {nombre: "YOGURT GRIEGO ESPECIAL", precio: 3.00},
+          {nombre: "PALETAS FITNESS ESPECIAL", precio: 3.00}
         ]
       },
       {
         categoria: "Refrescantes",
         productos: [
-          {nombre: "FRAPPE PARCHITA", precio: 1.60},
-          {nombre: "FRAPPE FRESA", precio: 1.80},
-          {nombre: "FRAPPE PIÑA", precio: 1.80}
+          {nombre: "FRAPPÉ PARCHITA", precio: 1.60},
+          {nombre: "FRAPPÉ FRESA", precio: 1.80},
+          {nombre: "FRAPPÉ PIÑA", precio: 1.80}
         ]
       },
       {
@@ -175,7 +176,7 @@
           {nombre: "FRESA", precio: 2.60},
           {nombre: "PIÑA", precio: 2.60},
           {nombre: "PARCHITA", precio: 2.60},
-          {nombre: "CAMBUR / FRESA", precio: 2.60}
+          {nombre: "CAMBUR Y FRESA", precio: 2.60}
         ]
       },
       {
@@ -196,7 +197,7 @@
           {nombre: "TOSTÓN", precio: 1.00},
           {nombre: "ENERGIZANTE", precio: 1.00},
           {nombre: "SODA", precio: 1.50},
-          {nombre: "C4 PRE-WORK", precio: 1.50},
+          {nombre: "C4 PRE WORKOUT", precio: 1.50},
           {nombre: "GATORADE", precio: 2.00},
           {nombre: "YOGURT NATURAL", precio: 2.00}
         ]
